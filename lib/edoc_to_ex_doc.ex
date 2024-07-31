@@ -1,4 +1,7 @@
 defmodule EdocToExDoc do
+  @moduledoc """
+  The moduledoc for EdocToExDoc
+  """
   alias ExDoc.Formatter.HTML
   alias ExDoc.{FunctionNode, ModuleNode}
 
@@ -15,6 +18,7 @@ defmodule EdocToExDoc do
       %ModuleNode{
         type: :module,
         id: "binary",
+        title: "binary",
         module: :binary,
         source_path: "binary.erl",
         doc_line: 100,
@@ -22,15 +26,30 @@ defmodule EdocToExDoc do
         docs: docs
       }
     ]
-    apps = []
-    deps = []
-    config = %{
-      main: "binary",
-      output: "./doc",
-      apps: apps,
-      deps: deps,
-      extras: [],
-      skip_undefined_reference_warnings_on: nil
+    # Config is the same information
+    # placed in the `docs:` section of project in `mix.exs`
+    config = %ExDoc.Config{
+      #main: "binary",
+      output: "./edoc",
+      #assets: [],
+      #authors: [],
+      #before_closing_body_tag: fn _ -> "" end,
+      #before_closing_head_tag: fn _ -> "" end,
+      #canonical: nil,
+      #extras: [],
+      #extra_section: "",
+      #formatters: [],
+      #groups_for_extras: [],
+      #homepage_url: "",
+      #javascript_config_path: nil,
+      #language: nil,
+      #logo: nil,
+      #package: nil,
+      #proglang: :erlang,
+      #project: nil,
+      #skip_undefined_reference_warnings_on: nil,
+      #source_url_pattern: "*.erl",
+      #version: nil
     }
     HTML.run(project_nodes, config)
     :ok
